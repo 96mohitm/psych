@@ -7,9 +7,14 @@ import javax.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name = "employees")
-public class Employee extends Auditable {
+@MappedSuperclass
+public abstract class Employee extends Auditable {
+    @Getter
+    @Setter
+    @NotBlank
+    @Email
+    private String email;
+
     @Getter
     @Setter
     @NotBlank
@@ -18,7 +23,10 @@ public class Employee extends Auditable {
     @Getter
     @Setter
     @NotBlank
-    @Email
-    private String email;
+    private String address;
 
+    @Getter
+    @Setter
+    @NotBlank
+    private String phoneNumber;
 }
